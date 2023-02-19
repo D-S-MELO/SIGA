@@ -1,0 +1,23 @@
+.container {
+  padding: 20px;
+  margin-left: 78px;
+
+  width: 100%;
+  height: 100%;
+}
+.sidebar.active + .container {
+  margin-left: 240px;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar.active {
+    width: 200px;
+  }
+
+  .sidebar.active + .container {
+    margin-left: 200px;
+  }
+}
