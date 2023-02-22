@@ -5,8 +5,10 @@ const Usuario = require('../controllers/Usuario');
 const err404 = require('../controllers/404');
 const Login = require('../controllers/Login');
 const router = express.Router();
+
 router.get('/', Home.index);
 router.get('/login', Login.index);
+router.get('/logout', Login.logout);
 router.post('/login', Login.auth);
 router.get('/usuario', Usuario.index);
 router.get('/usuario/cadastro', Cadastro.index);

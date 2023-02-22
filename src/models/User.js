@@ -13,6 +13,7 @@ const UserSchema = new Schema(
     cpf: {
       type: String,
       require: true,
+      unique: true,
     },
     dtnascimento: {
       type: Date,

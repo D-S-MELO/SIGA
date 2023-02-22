@@ -47,11 +47,28 @@ const add = async function (request, response, next) {
   novoUsuario.senha = await novoUsuario.encryptPassword(senha);
   await novoUsuario.save({}, (err, users) => {
     if (err) {
-      request.flash(
-        'error_msg',
-        'Operação Bloqueada! Ocorreu um erro ao cadastrar o usuário'
-      );
-      response.redirect('/usuario/cadastro');
+      const description = 'Operação Bloqueada! Usuário Já Cadastrado!';
+      response.render('formUser', {
+        layout: MASTER_DIR,
+        err,
+        description,
+        nome,
+        idade,
+        cpf,
+        dtnascimento,
+        sexo,
+        fixo,
+        celular,
+        email,
+        senha,
+        escolaridade,
+        logradouro,
+        numero,
+        bairro,
+        cidade,
+        estado,
+        cep,
+      });
     } else {
       request.flash('success_mgs', 'Usuário Cadastrado com Sucesso!');
       response.redirect('/usuario');

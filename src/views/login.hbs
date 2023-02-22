@@ -9,19 +9,21 @@
   <link rel="shortcut icon" type="imagex/png" href="">
 </head>
 
+
 <body id="body">
   <div class="wrapper">
     <div class="title">SIGA</div>
     <form id="form" action="/login" method="POST">
+      <label style="color:Red">{{message}}</label>
       <div class="field">
-        <input type="text" name="email" id="email" required>
+        <input type="text" name="email" id="email" value="{{email}}" required>
         <label>Email</label>
       </div>
       <div class="field">
         <input type="password" name="senha" id="senha" required>
         <label>Senha</label>
       </div>
-      <div class="pass-link"><a href="#">Esqueceu sua senha?</a></div>
+      {{!-- <div class="pass-link"><a href="#">Esqueceu sua senha?</a></div> --}}
       <div class="field">
         <input type="submit" value="Login" id="login" />
     </form>

@@ -15,7 +15,7 @@ if (sidebar) {
 }
 if (getOut) {
   getOut.onclick = function () {
-    window.location.href = 'login';
+    window.location.href = 'logout';
   };
 }
 

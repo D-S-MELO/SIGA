@@ -2,33 +2,44 @@
   {{>menu}}
 </div>
 <div class="container">
-  {{>mensagem}}
-  <form action="/usuario/cadastro" method="POST">
+  {{#if err}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{description}}
+    <hr>
+    <h5>Detalhe do Erro:</h5>
+    <p>{{err}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {{/if}}
+  <form class="needs-validation " action="/usuario/cadastro" method="POST">
     <div class="form-group">
       <h3>Dados Pessoais</h3>
       <div class="form-row">
         <div class="form-group col-sm-10">
           <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" />
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="{{nome}}" required />
         </div>
         <div class="form-group col-sm-2">
           <label for="idade">Idade</label>
-          <input type="text" class="form-control" id="idade" name="idade" placeholder="Idade" />
+          <input type="text" class="form-control" id="idade" name="idade" placeholder="Idade" value="{{idade}}"
+            required />
         </div>
       </div>
-      <div class="form-row needs-validation">
+      <div class="form-row ">
         <div class="form-group col-md-4">
           <label for="cpf">CPF</label>
-          <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" />
+          <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" value="{{cpf}}" required />
         </div>
         <div class="form-group col-md-4">
           <label for="dtnascimento">Data de Nascimento</label>
-          <input type="date" class="form-control" id="dtnascimento" name="dtnascimento"
-            placeholder="Data de Nascimento" />
+          <input type="date" class="form-control" id="dtnascimento" name="dtnascimento" placeholder="Data de Nascimento"
+            value="{{dtnascimento}}" required />
         </div>
         <div class="form-group col-md-4">
           <label for="sexo">Sexo</label>
-          <select id="sexo" name="sexo" class="form-control">
+          <select id="sexo" name="sexo" class="form-control" value="{{sexo}}" required>
             <option>Masculino</option>
             <option>Feminino</option>
             <option>Outros</option>
@@ -38,15 +49,17 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="fixo">Telefone Fixo</label>
-          <input type="text" class="form-control" id="fixo" name="fixo" placeholder="Telefone Fixo" />
+          <input type="text" class="form-control" id="fixo" name="fixo" placeholder="Telefone Fixo" value="{{fixo}}"
+            required />
         </div>
         <div class="form-group col-md-4">
           <label for="celular">Telefone Celular</label>
-          <input type="text" class="form-control" id="celular" name="celular" placeholder="Telefone Celular" />
+          <input type="text" class="form-control" id="celular" name="celular" placeholder="Telefone Celular"
+            value="{{celular}}" required />
         </div>
         <div class="form-group col-md-4">
           <label for="escolaridade">Escolaridade</label>
-          <select id="escolaridade" name="escolaridade" class="form-control">
+          <select id="escolaridade" name="escolaridade" class="form-control" value="{{escolaridade}}" required>
             <option selected>Analfabeto</option>
             <option>Fundamental Incompleto</option>
             <option>Fundamental Completo</option>
@@ -60,11 +73,13 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label for="email">E-mail</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" />
+          <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" value="{{email}}"
+            required />
         </div>
         <div class="form-group col-sm-6">
           <label for="senha">senha</label>
-          <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" />
+          <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" value="{{senha}}"
+            required />
         </div>
       </div>
     </div>
@@ -72,7 +87,7 @@
     <div class="form-row">
       <div class="form-group col-md-2">
         <label for="cep">CEP</label>
-        <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" />
+        <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" value="{{cep}}" required />
       </div>
       <div class="form-group col-md-2">
         <button type="button" id="buttonPesquisaCep" class="btn btn-secondary" style="margin-top: 32px"
@@ -84,25 +99,30 @@
     <div class="form-row">
       <div class="form-group col-md-10">
         <label for="logradouro">Endereço</label>
-        <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Endereço" />
+        <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Endereço"
+          value="{{logradouro}}" required />
       </div>
       <div class="form-group col-md-2">
         <label for="numero">Número</label>
-        <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" />
+        <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" value="{{numero}}"
+          required />
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="bairro">Bairro</label>
-        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" />
+        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{bairro}}"
+          required />
       </div>
       <div class="form-group col-md-4">
         <label for="cidade">Cidade</label>
-        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" />
+        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" value="{{cidade}}"
+          required />
       </div>
       <div class="form-group col-md-4">
         <label for="estado">Estado</label>
-        <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" />
+        <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" value="{{estado}}"
+          required />
       </div>
     </div>
     <button type="submit" class="btn btn-secondary" style="margin-top: 32px">

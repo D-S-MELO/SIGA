@@ -22,31 +22,34 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverrride('_method'));
 app.use(
   session({
-    secret: 'secret',
+    secret: 'AppNOde',
+    resave: false,
+    saveUninitialized: false,
     resave: true,
-    saveUninitialized: true,
-    resave: true,
-    cookie: { maxAge: 3600000 },
+    cookie: { maxAge: 30 * 60 * 1000 },
   })
 );
 app.use(flash());
 app.use(passport.initialize());
+app.use(passport.session());
 
 //variaveis globais
 app.use((request, response, next) => {
   response.locals.success_mgs = request.flash('success_mgs');
   next();
 });
+app.use((request, response, next) => {
+  response.locals.error_msg = request.flash('error_msg');
+  next();
+});
+
 //Arquivos Estaticos
 app.use(express.static(path.join(__dirname, 'assets')));
-// app.use(express.static(path.join(__dirname, 'assets/public/imagens')));
-// app.use(express.static(path.join(__dirname, 'assets/public/css')));
-// app.use(express.static(path.join(__dirname, 'assets/public/controler')));
 
 // Rotas
 app.use('/', require('./routes/home'));
-//Configurações Servidor
 
+//Configurações Servidor
 app.listen(3000, function () {
   console.log('Servidor Rodando');
 });

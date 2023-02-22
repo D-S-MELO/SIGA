@@ -12,17 +12,21 @@ passport.use(
     async (email, senha, done) => {
       // Procura o E-mail
       const user = await Users.findOne({ email });
-      console.log(user);
-      console.log(senha);
       if (!user) {
-        return done(null, false, { mensagem: 'Usuário não cadastrado!' });
+        return done(null, false, {
+          mensagem: 'Usuário não cadastrado!',
+          email,
+        });
       } else {
         //Compara a senha
         const match = await user.matchPassword(senha);
         if (match) {
           return done(null, user);
         } else {
-          return done(null, false, { mensagem: 'Usuário ou senha inválidos!' });
+          return done(null, false, {
+            mensagem: 'Usuário ou senha inválidos!',
+            email,
+          });
         }
       }
     }
